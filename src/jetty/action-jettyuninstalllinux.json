@@ -1,0 +1,65 @@
+{
+   "SCRIPTAction" : {
+      "actionPack" : {
+         "name" : "Jetty",
+         "category" : "Jetty",
+         "description" : "Integration actions for the Jetty embeddable web server.  More information on Jetty available at jetty.apache.org.",
+         "author" : "CA Technologies",
+         "dependencies" : "",
+         "platform" : "Windows and Linux",
+         "version" : "0.1  ",
+         "license" : "",
+         "imageLocation" : "http://localhost:8080/RDKServer/workingDirectory/ActionPacks/jetty/jetty-logo-80x22.png",
+         "lastModified" : "2014-11-05T00:41:52.084-08:00",
+         "tags" : [ ],
+         "packageName" : "jetty"
+      },
+      "name" : "Jetty - Uninstall - Linux",
+      "description" : "Uninstall Jetty from a Linux system using the provided installation folder.",
+      "inputParamList" : [ {
+         "name" : "Installation Directory",
+         "type" : "String",
+         "description" : "The Jetty installation directory.",
+         "required" : false,
+         "variableName" : "installationdirectory",
+         "arrayOption" : false
+      } ],
+      "outputParamList" : [ {
+         "name" : "Execution Output",
+         "type" : "String",
+         "description" : "Standard out from the command execution.",
+         "filterValue" : "[\\s\\S]*",
+         "filterType" : "REGEX",
+         "variableName" : "executionoutput",
+         "source" : "standardOut",
+         "arrayOption" : false
+      } ],
+      "type" : "SCRIPT",
+      "complete" : true,
+      "lastModified" : "2014-11-05T00:41:56.578-08:00",
+      "className" : "JettyUninstallLinux",
+      "packageName" : "com.ca.jetty",
+      "shellType" : "DEFAULT_OS",
+      "scripts" : [ {
+         "content" : "",
+         "envVariables" : [ {
+         } ],
+         "execDir" : "%HOME%",
+         "name" : "",
+         "osType" : "WINDOWS",
+         "overwriteOutput" : true,
+         "timeout" : 30,
+         "waitForProcess" : true
+      }, {
+         "content" : "rm -fr ${Installation Directory}",
+         "envVariables" : [ {
+         } ],
+         "execDir" : "",
+         "name" : "JettyUninstallLinux1415176916576.sh",
+         "osType" : "LINUX",
+         "overwriteOutput" : true,
+         "timeout" : 30,
+         "waitForProcess" : true
+      } ]
+   }
+}

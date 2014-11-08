@@ -1,0 +1,16 @@
+{
+   "ActionPack" : {
+      "name" : "Jetty",
+      "category" : "Jetty",
+      "description" : "Integration actions for the Jetty embeddable web server.  More information on Jetty available at jetty.apache.org.",
+      "author" : "CA Technologies",
+      "dependencies" : "",
+      "platform" : "Windows and Linux",
+      "version" : "0.1 ",
+      "license" : "",
+      "imageLocation" : "http://localhost:8080/RDKServer/workingDirectory/ActionPacks/jetty/jetty-logo-80x22.png",
+      "lastModified" : "2014-11-05T00:41:52.084-08:00",
+      "tags" : [ ],
+      "packageName" : "jetty"
+   }
+}

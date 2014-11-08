@@ -1,0 +1,69 @@
+{
+   "SCRIPTAction" : {
+      "actionPack" : {
+         "name" : "Jetty",
+         "category" : "Jetty",
+         "description" : "Integration actions for the Jetty embeddable web server.  More information on Jetty available at jetty.apache.org.",
+         "author" : "CA Technologies",
+         "dependencies" : "",
+         "platform" : "Windows and Linux",
+         "version" : "0.1  ",
+         "license" : "",
+         "imageLocation" : "http://localhost:8080/RDKServer/workingDirectory/ActionPacks/jetty/jetty-logo-80x22.png",
+         "lastModified" : "2014-11-05T00:41:52.084-08:00",
+         "tags" : [ ],
+         "packageName" : "jetty"
+      },
+      "name" : "Jetty - Start",
+      "description" : "Start the Jetty server.",
+      "inputParamList" : [ {
+         "name" : "Working Directory",
+         "type" : "String",
+         "description" : "The working directory for Jetty. This should be the same directory in which Jetty was installed.",
+         "required" : false,
+         "variableName" : "workingdirectory",
+         "arrayOption" : false
+      }, {
+         "name" : "Port",
+         "type" : "Integer",
+         "description" : "The numeric port on which Jetty is running.",
+         "required" : false,
+         "defaultValue" : "8080",
+         "variableName" : "port",
+         "arrayOption" : false
+      } ],
+      "outputParamList" : [ {
+         "name" : "Execution Output",
+         "type" : "String",
+         "description" : "Standard out from the command execution.",
+         "filterValue" : "[\\s\\S]*",
+         "filterType" : "REGEX",
+         "variableName" : "executionoutput",
+         "source" : "standardOut",
+         "arrayOption" : false
+      } ],
+      "type" : "SCRIPT",
+      "complete" : true,
+      "lastModified" : "2014-11-05T00:41:56.489-08:00",
+      "className" : "JettyStart",
+      "packageName" : "com.ca.jetty",
+      "shellType" : "DEFAULT_OS",
+      "scripts" : [ {
+         "content" : "java -DSTOP.PORT=8079 -DSTOP.KEY=jettysecret -jar start.jar jetty.port=${Port}",
+         "execDir" : "${Working Directory}",
+         "name" : "JettyStart1415176916485.bat",
+         "osType" : "WINDOWS",
+         "overwriteOutput" : true,
+         "timeout" : 30,
+         "waitForProcess" : false
+      }, {
+         "content" : "java -DSTOP.PORT=8079 -DSTOP.KEY=jettysecret -jar start.jar jetty.port=${Port}",
+         "execDir" : "${Working Directory}",
+         "name" : "JettyStart1415176916487.sh",
+         "osType" : "LINUX",
+         "overwriteOutput" : true,
+         "timeout" : 30,
+         "waitForProcess" : false
+      } ]
+   }
+}

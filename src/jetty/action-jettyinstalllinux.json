@@ -1,0 +1,80 @@
+{
+   "SCRIPTAction" : {
+      "actionPack" : {
+         "name" : "Jetty",
+         "category" : "Jetty",
+         "description" : "Integration actions for the Jetty embeddable web server.  More information on Jetty available at jetty.apache.org.",
+         "author" : "CA Technologies",
+         "dependencies" : "",
+         "platform" : "Windows and Linux",
+         "version" : "0.1  ",
+         "license" : "",
+         "imageLocation" : "http://localhost:8080/RDKServer/workingDirectory/ActionPacks/jetty/jetty-logo-80x22.png",
+         "lastModified" : "2014-11-05T00:41:52.084-08:00",
+         "tags" : [ ],
+         "packageName" : "jetty"
+      },
+      "name" : "Jetty - Install - Linux",
+      "description" : "Install Jetty on a target Linux system by providing the location of the Jetty download as a tar file and the destination installation folder.",
+      "inputParamList" : [ {
+         "name" : "Tar File URL",
+         "type" : "String",
+         "description" : "The location of the Jetty tar file for download an installation on a Linux system.",
+         "required" : false,
+         "variableName" : "tarfileurl",
+         "arrayOption" : false
+      }, {
+         "name" : "Installation Directory",
+         "type" : "String",
+         "description" : "The directory to install Jetty on to.",
+         "required" : false,
+         "variableName" : "installationdirectory",
+         "arrayOption" : false
+      }, {
+         "name" : "Distribution Name",
+         "type" : "String",
+         "description" : "Distribution name that contains in tar file.",
+         "required" : false,
+         "defaultValue" : "jetty-distribution-9.1.3.v20140225",
+         "variableName" : "distributionname",
+         "arrayOption" : false
+      } ],
+      "outputParamList" : [ {
+         "name" : "Execution Output",
+         "type" : "String",
+         "description" : "Standard out from the command execution.",
+         "filterValue" : "[\\s\\S]*",
+         "filterType" : "REGEX",
+         "variableName" : "executionoutput",
+         "source" : "standardOut",
+         "arrayOption" : false
+      } ],
+      "type" : "SCRIPT",
+      "complete" : true,
+      "lastModified" : "2014-11-05T00:41:56.403-08:00",
+      "className" : "JettyInstallLinux",
+      "packageName" : "com.ca.jetty",
+      "shellType" : "DEFAULT_OS",
+      "scripts" : [ {
+         "content" : "",
+         "envVariables" : [ {
+         } ],
+         "execDir" : "%HOME%",
+         "name" : "",
+         "osType" : "WINDOWS",
+         "overwriteOutput" : true,
+         "timeout" : 30,
+         "waitForProcess" : true
+      }, {
+         "content" : "wget ${Tar File URL} -O jetty.tar.gz\ntar -zxvf jetty.tar.gz ${Distribution Name}/\nmv ${Distribution Name} ${Installation Directory}",
+         "envVariables" : [ {
+         } ],
+         "execDir" : "",
+         "name" : "JettyInstallLinux1415176916401.sh",
+         "osType" : "LINUX",
+         "overwriteOutput" : true,
+         "timeout" : 30,
+         "waitForProcess" : true
+      } ]
+   }
+}

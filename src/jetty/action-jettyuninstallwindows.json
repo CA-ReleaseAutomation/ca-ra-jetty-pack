@@ -1,0 +1,57 @@
+{
+   "SCRIPTAction" : {
+      "actionPack" : {
+         "name" : "Jetty",
+         "category" : "Jetty",
+         "description" : "Integration actions for the Jetty embeddable web server.  More information on Jetty available at jetty.apache.org.",
+         "author" : "CA Technologies",
+         "dependencies" : "",
+         "platform" : "Windows and Linux",
+         "version" : "0.1  ",
+         "license" : "",
+         "imageLocation" : "http://localhost:8080/RDKServer/workingDirectory/ActionPacks/jetty/jetty-logo-80x22.png",
+         "lastModified" : "2014-11-05T00:41:52.084-08:00",
+         "tags" : [ ],
+         "packageName" : "jetty"
+      },
+      "name" : "Jetty - Uninstall - Windows",
+      "description" : "Uninstall Jetty from a Windows system using the provided installation folder.",
+      "inputParamList" : [ {
+         "name" : "Installation Directory",
+         "type" : "String",
+         "description" : "The Jetty installation directory.",
+         "required" : false,
+         "variableName" : "installationdirectory",
+         "arrayOption" : false
+      } ],
+      "outputParamList" : [ {
+         "name" : "Execution Output",
+         "type" : "String",
+         "description" : "Standard out from the command execution.",
+         "filterValue" : "[\\s\\S]*",
+         "filterType" : "REGEX",
+         "variableName" : "executionoutput",
+         "source" : "standardOut",
+         "arrayOption" : false
+      } ],
+      "type" : "SCRIPT",
+      "complete" : true,
+      "lastModified" : "2014-11-05T00:41:56.619-08:00",
+      "className" : "JettyUninstallWindows",
+      "packageName" : "com.ca.jetty",
+      "shellType" : "POWERSHELL",
+      "powerShellScript" : {
+         "content" : "###########################################################\n# AUTHOR  : Andrii Dziuba\n# DATE    : 2014-03-07\n# NAME    : UnInstall Jetty\n###########################################################\n \n#ERROR REPORTING ALL\nSet-StrictMode -Version latest\n \n#---------------------------------------------------------- \n#STATIC VARIABLES\n#----------------------------------------------------------\n$pathToFolder = \"${Installation Directory}\"\n\nFunction DeleteJar\n{\n\tIf (Test-Path $pathToFolder){\n\t\tRemove-Item -Recurse -Force $pathToFolder\n\t\tWrite-Host \"Folder: $pathToFolder is deleted\"\n\t\treturn\n\t}\n\tElse {\n\t\tWrite-Host \"ERROR# Folder: $pathToFolder not found\"\n\t}\n\t\n}\n \nFunction RunAll\n{\n\tDeleteJar\n}\n\n#RUN SCRIPT\nRunAll\n\"Done, Thank You\"",
+         "execDir" : "",
+         "location" : "",
+         "name" : "",
+         "overwriteOutput" : false,
+         "timeout" : 0,
+         "waitForProcess" : false,
+         "executionTimeout" : 400,
+         "expectedReturnCode" : 0,
+         "options" : [ {
+         } ]
+      }
+   }
+}
